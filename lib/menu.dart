@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movie_choice/constants.dart';
+import 'package:movie_choice/history.dart';
+import 'package:movie_choice/home.dart';
+import 'package:movie_choice/settings.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class Menu extends StatefulWidget {
@@ -13,6 +16,12 @@ class Menu extends StatefulWidget {
 class _Menu extends State<Menu> {
   var _currentIndex = 1;
 
+  static const List<Widget> _pages = <Widget>[
+    Settings(),
+    Home(),
+    History()
+  ];
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -23,6 +32,8 @@ class _Menu extends State<Menu> {
         elevation: 0,
         title: Text(widget.title)
       ),
+
+      body: Center(child: _pages.elementAt(_currentIndex)),
 
       bottomNavigationBar: SalomonBottomBar(
         currentIndex: _currentIndex,
