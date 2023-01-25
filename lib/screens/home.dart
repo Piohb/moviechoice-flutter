@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:appinio_swiper/appinio_swiper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:movie_choice/constants.dart';
+import 'package:movie_choice/fragments/swipeButton.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -41,32 +42,35 @@ class _Home extends State<Home> {
       ),
 
       bottomNavigationBar: ButtonBar(
-        alignment: MainAxisAlignment.center,
+        alignment: MainAxisAlignment.spaceAround,
         children: [
-          IconButton(
-            onPressed: (() {}),
-            icon: const Icon(Icons.undo),
-            iconSize: 20,
-            splashRadius: 25,
+          SwipeButton(
+            onPressed: (){},
+            icon: const Icon(Icons.undo), 
+            color: whiteColor
           ),
-          IconButton(
-            onPressed: (() {}),
-            icon: const Icon(Icons.cancel),
-            iconSize: 50,
-            splashRadius: 30,
+          SwipeButton(
+            onPressed: (){},
+            icon: const Icon(Icons.close), 
+            color: redColor,
+            isBig: true,
           ),
-          IconButton(
-            onPressed: (() {}),
-            icon: const Icon(Icons.refresh)
+          SwipeButton(
+            onPressed: (){}, 
+            icon: const Icon(Icons.refresh), 
+            color: yellowColor
           ),
-          IconButton(
-            onPressed: (() {}),
-            icon: const Icon(Icons.done)
+          SwipeButton(
+            onPressed: (){}, 
+            icon: const Icon(Icons.done), 
+            color: greenColor,
+            isBig: true,
           ),
-          IconButton(
-            onPressed: (() {}),
-            icon: const Icon(Icons.visibility)
-          )
+          SwipeButton(
+            onPressed: (){}, 
+            icon: const Icon(Icons.visibility), 
+            color: whiteColor
+          ),
         ]
       ),
     );
