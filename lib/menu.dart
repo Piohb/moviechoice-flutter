@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_choice/constants.dart';
-import 'package:movie_choice/history.dart';
-import 'package:movie_choice/home.dart';
+import 'package:movie_choice/screens/history.dart';
+import 'package:movie_choice/screens/home.dart';
 import 'package:movie_choice/settings.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
