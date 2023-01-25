@@ -43,21 +43,24 @@ class _Menu extends State<Menu> {
           SalomonBottomBarItem(
             icon: const Icon(Icons.settings),
             title: const Text('Préférences'),
-            selectedColor: whiteColor
+            selectedColor: bgColor,
+            unselectedColor: bgColor
           ),
 
           /// MOVIES
           SalomonBottomBarItem(
             icon: const Icon(Icons.movie), 
             title: const Text('Films'),
-            selectedColor: whiteColor
+            selectedColor: bgColor,
+            unselectedColor: bgColor
           ),
 
           /// HISTORY
           SalomonBottomBarItem(
             icon: const Icon(Icons.history), 
             title: const Text('Historique'),
-            selectedColor: whiteColor
+            selectedColor: bgColor,
+            unselectedColor: bgColor
           )
         ],
       ),
