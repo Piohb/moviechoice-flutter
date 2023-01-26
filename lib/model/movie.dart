@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:movie_choice/model/category.dart';
 
 class Movie {
   final int id;

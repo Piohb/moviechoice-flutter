@@ -20,7 +20,7 @@ class _Settings extends State<Settings> {
   SharedPreferences? preferences;
 
   List<Category> categories = [];
-  //List<Category> selected = [];
+  List<Category> selected = [];
 
   Future<void> loadCategories() async {
     final response = await http.get(
@@ -41,8 +41,6 @@ class _Settings extends State<Settings> {
 
   void saveCategory(list){
     preferences?.setString(preferencesKey, Category.encode(list));
-    print('là');
-    print(preferences?.getString(preferencesKey));
   }
 
   @override
@@ -54,6 +52,11 @@ class _Settings extends State<Settings> {
   Future<void> init() async {
     await loadCategories();
     preferences = await SharedPreferences.getInstance();
+    var cache = Category.decode(preferences?.getString(preferencesKey));
+
+    for(var item in cache){
+      selected = selected + categories.where((category) => category.name == item.name).toList();
+    }
   }
   
   @override
@@ -77,7 +80,7 @@ class _Settings extends State<Settings> {
           )
         ),
         listData: categories,
-        selectedListData: Category.decode(preferences?.getString(preferencesKey)),
+        selectedListData: selected,
         onApplyButtonClick: ((list) {
           saveCategory(list);
         }),
