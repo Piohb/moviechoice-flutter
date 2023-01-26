@@ -29,7 +29,9 @@ class SwipeButton extends StatelessWidget {
       ),
 
       child: IconButton(
-        onPressed: (() => onPressed),
+        onPressed: () {
+          onPressed();
+        },
         icon: icon,
         color: color,
         iconSize: isBig ? 30 : 15,
