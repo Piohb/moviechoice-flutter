@@ -16,16 +16,14 @@ class Home extends StatefulWidget {
 }
 
 class _Home extends State<Home> {
-
-  List<Movie>movies = [];
+  List<Movie> movies = [];
 
   Future<void> loadMovies() async {
     final response = await http.get(
-      Uri.parse('$apiUrl/discover/movie?api_key=$apiKey&language=fr-FR')
-    );
+        Uri.parse('$apiUrl/discover/movie?api_key=$apiKey&language=fr-FR'));
     final json = jsonDecode(response.body);
     var parsed = json['results'] as List;
-    
+
     setState(() {
       movies = parsed.map<Movie>((item) => Movie.fromJson(item)).toList();
     });
@@ -38,14 +36,11 @@ class _Home extends State<Home> {
   }
 
   final AppinioSwiperController controller = AppinioSwiperController();
-  
-  @override
-  Widget build(BuildContext context){
 
-    final List<SwipeCard> cards = movies
-      .map((movie) => 
-        SwipeCard(movie: movie)
-      ).toList();
+  @override
+  Widget build(BuildContext context) {
+    final List<SwipeCard> cards =
+        movies.map((movie) => SwipeCard(movie: movie)).toList();
 
     return Scaffold(
       backgroundColor: bgColor,
@@ -56,47 +51,39 @@ class _Home extends State<Home> {
           controller: controller,
         ),
       ),
-
-      bottomNavigationBar: ButtonBar(
-        alignment: MainAxisAlignment.spaceAround,
-        children: [
-          SwipeButton(
-            onPressed: (){
+      bottomNavigationBar:
+          ButtonBar(alignment: MainAxisAlignment.spaceAround, children: [
+        SwipeButton(
+            onPressed: () {
               controller.unswipe();
             },
-            icon: const Icon(Icons.undo), 
-            color: whiteColor
-          ),
-          SwipeButton(
-            onPressed: (){
-              controller.swipeLeft();
-            },
-            icon: const Icon(Icons.close), 
-            color: redColor,
-            isBig: true,
-          ),
-          SwipeButton(
-            onPressed: (){
-
-            }, 
-            icon: const Icon(Icons.refresh), 
-            color: yellowColor
-          ),
-          SwipeButton(
-            onPressed: (){
-              controller.swipeRight();
-            }, 
-            icon: const Icon(Icons.done), 
-            color: greenColor,
-            isBig: true,
-          ),
-          SwipeButton(
-            onPressed: (){}, 
-            icon: const Icon(Icons.visibility), 
-            color: whiteColor
-          ),
-        ]
-      ),
+            icon: const Icon(Icons.undo),
+            color: whiteColor),
+        SwipeButton(
+          onPressed: () {
+            controller.swipeLeft();
+          },
+          icon: const Icon(Icons.close),
+          color: redColor,
+          isBig: true,
+        ),
+        SwipeButton(
+            onPressed: () {},
+            icon: const Icon(Icons.refresh),
+            color: yellowColor),
+        SwipeButton(
+          onPressed: () {
+            controller.swipeRight();
+          },
+          icon: const Icon(Icons.done),
+          color: greenColor,
+          isBig: true,
+        ),
+        SwipeButton(
+            onPressed: () {},
+            icon: const Icon(Icons.visibility),
+            color: whiteColor),
+      ]),
     );
   }
 }
